@@ -14,15 +14,14 @@ def main():
         sheet = excel_file.sheet_by_name(tab_name)
         rows = sheet.nrows
 
-        for i in range(0, rows):
+        # for the first row which contains field names
+        line = ",".join([ str(x) for x in sheet.row_values(0) ]) + ",Client"
+        fp.write(line + "\n")
 
-            if i == 0:
-                # for the first row which contains field names
-                line = ",".join([ str(x) for x in sheet.row_values(i) ]) + ",Client"
-            else:
-                # other rows that contain data
-                line = "Test," * (len(sheet.row_values(i)) + 1)
+        for i in range(1, rows):
 
+            # other rows that contain data
+            line = "Test," * (len(sheet.row_values(i))) + "Test"
             fp.write(line + "\n")
 
         fp.close()
