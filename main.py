@@ -15,6 +15,7 @@ def main():
         rows = sheet.nrows
 
         # for the first row which contains field names
+        # add client at the end.
         line = ",".join([ str(x) for x in sheet.row_values(0) ]) + ",Client"
         fp.write(line + "\n")
 
